@@ -2,8 +2,8 @@
   description = "My NixOS System Configuration Flake";
 
   inputs = {
-    nixpkgs.url = "github.com/nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github.com/nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
   };
 
   outputs = { self, nixpkgs }:
