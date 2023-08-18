@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports =
@@ -96,9 +96,8 @@
   users.users.carson = {
     isNormalUser = true;
     description = "Carson Webster";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
-      firefox
       kate
       git
       gh
@@ -148,6 +147,9 @@
     dedicatedServer.openFirewall = true;
   };
 
+  # Docker
+  # virtualisation.docker.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -158,6 +160,13 @@
     wget
     neofetch
   ];
+
+  # Garbage collector
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

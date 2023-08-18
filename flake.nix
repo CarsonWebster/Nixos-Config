@@ -1,34 +1,37 @@
 {
   description = "My NixOS System Configuration Flake";
-
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+  
+inputs = {
+  nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  home-manager = {
+   url = "github:nix-community/home-manager";
+   inputs.nixpkgs.follows = "nixpkgs";
   };
+};
 
-  outputs = { self, nixpkgs }:
-  let
-    system = "x86_64-linux";
+outputs = { self, nixpkgs, home-manager, ...} @inputs : 
 
-    pkgs = import nixpkgs {
+let
+  system = "x86_64-linux";
+  pkgs = import nixpkgs {
+    inherit system;
+	  config.allowUnfree = true;	
+  };
+  lib = nixpkgs.lib;
+
+in {
+  nixosConfigurations = {
+    Terra = lib.nixosSystem {
       inherit system;
-
-      config = {
-        allowUnfree = true;
-      };
-    };
-
-  in
-  {
-    
-    nixosConfigurations = {
-      Terra = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit system; };
-
-	modules = [
-          ./hosts/terra/configuration.nix
-	];
-      };
+      modules = [ 
+        ./hosts/terra/configuration.nix
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.carson = import ./home/home.nix ;
+        }
+      ];
     };
   };
+};
 }
