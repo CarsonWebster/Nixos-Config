@@ -28,7 +28,7 @@
         Terra = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs system; };
           modules = [
-            ./nixos/configuration.nix
+            ./hosts/terra/configuration.nix
           ];
         };
       };
@@ -41,7 +41,7 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
-          modules = [ ./nixos/home.nix ];
+          modules = [ ./hosts/terra/home.nix ];
         };
       };
     };
