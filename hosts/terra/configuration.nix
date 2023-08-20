@@ -116,11 +116,6 @@
 
       tailscale
 
-      # firefox
-      # kate
-      # git
-      # gh
-      # thunderbird
       # Unfree packages that cant move?
       vscode
       discord
@@ -135,11 +130,11 @@
   programs.zsh.enable = true;
   services.tailscale.enable = true;
   programs.neovim.enable = true;
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
+  # programs.steam = {
+  #   enable = true;
+  #   remotePlay.openFirewall = true;
+  #   dedicatedServer.openFirewall = true;
+  # };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
