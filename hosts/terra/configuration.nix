@@ -16,6 +16,13 @@
     users = {
       carson = import ./home.nix;
     };
+    # useGlobalPkgs = true;
+  };
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
   };
 
   # Bootloader.
@@ -116,12 +123,6 @@
 
       tailscale
 
-      # Unfree packages that cant move?
-      vscode
-      discord
-      obsidian
-      spotify
-
       networkmanagerapplet
       blueman
       playerctl
@@ -129,15 +130,11 @@
   };
   programs.zsh.enable = true;
   services.tailscale.enable = true;
-  programs.neovim.enable = true;
-  # programs.steam = {
-  #   enable = true;
-  #   remotePlay.openFirewall = true;
-  #   dedicatedServer.openFirewall = true;
-  # };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

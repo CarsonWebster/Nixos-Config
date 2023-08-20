@@ -5,7 +5,28 @@
   # manage.
   home.username = "carson";
   home.homeDirectory = "/home/carson";
-  nixpkgs.config.allowUnfree = true;
+
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # If you want to use overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+    ];
+    # Configure your nixpkgs instance
+    config = {
+      # Disable if you don't want unfree packages
+      allowUnfree = true;
+      # Workaround for https://github.com/nix-community/home-manager/issues/2942
+      allowUnfreePredicate = (_: true);
+    };
+  };
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -63,6 +84,7 @@
     ## Web
     firefox
     ## Files
+    obsidian
     xfce.thunar
     gnome.nautilus
     gnome.sushi
@@ -72,7 +94,10 @@
     gnome.eog
     image-roll
     imv
+    discord
+    spotify
     ## Development
+    vscode
     kate
     gh
     ## Gaming
@@ -110,6 +135,7 @@
       # package.disabled = true;
     };
   };
+  programs.neovim.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
