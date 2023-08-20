@@ -43,6 +43,8 @@
     pavucontrol
 
     hyfetch
+    lsd
+    nerdfonts
   ];
 
   programs.git = {
