@@ -116,47 +116,20 @@
 
       tailscale
 
-      firefox
-      kate
-      git
-      gh
-      thunderbird
+      # firefox
+      # kate
+      # git
+      # gh
+      # thunderbird
+      # Unfree packages that cant move?
       vscode
       discord
       obsidian
-      solaar
-      obs-studio
-      vlc
       spotify
-      xfce.thunar
-      gnome.nautilus
-      gnome.sushi
-
-      gnome.eog
-      image-roll
-      imv
-
-      lutris
-      parsec-bin
-
-      alacritty
-      wezterm
 
       networkmanagerapplet
       blueman
       playerctl
-      btop
-
-      # Wayland / Hyprland packages
-      kitty
-      dunst
-      libnotify
-      waybar-hyprland
-      font-awesome
-      eww
-      swww
-      wofi
-      # rofi-wayland
     ];
   };
   programs.zsh.enable = true;

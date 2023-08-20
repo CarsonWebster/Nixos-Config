@@ -5,6 +5,7 @@
   # manage.
   home.username = "carson";
   home.homeDirectory = "/home/carson";
+  nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -35,16 +36,48 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    lazygit
-
+    # Desktop
     swaylock-effects
-    wlogout
     pamixer
     pavucontrol
-
+    wlogout
+    solaar # Logitech controller
+    dunst
+    libnotify
+    waybar-hyprland
+    font-awesome
+    eww-wayland
+    swww
+    wofi
+    # rofi-wayland
+    # Terminal
+    lazygit
     hyfetch
     lsd
     nerdfonts
+    alacritty
+    wezterm
+    kitty
+    btop
+    # Applications
+    ## Web
+    firefox
+    ## Files
+    xfce.thunar
+    gnome.nautilus
+    gnome.sushi
+    ## Media
+    vlc
+    obs-studio
+    gnome.eog
+    image-roll
+    imv
+    ## Development
+    kate
+    gh
+    ## Gaming
+    lutris
+    parsec-bin
   ];
 
   programs.git = {
