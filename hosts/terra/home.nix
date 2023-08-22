@@ -161,6 +161,21 @@
     # '';
   };
 
+  xdg.configFile = { 
+    hypr = {
+      source = dotfiles/hypr;
+      recursive = true;
+    };
+    kitty = {
+      source = dotfiles/kitty;
+      recursive = true;
+    };
+    waybar = {
+      source = dotfiles/waybar;
+      recursive = true;
+    };
+  };
+
   # You can also manage environment variables but you will have to manually
   # source
   #
