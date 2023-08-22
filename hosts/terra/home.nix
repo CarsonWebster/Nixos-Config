@@ -103,6 +103,8 @@
     ## Gaming
     lutris
     parsec-bin
+    ## HTB
+    openvpn
   ];
 
   programs.git = {
