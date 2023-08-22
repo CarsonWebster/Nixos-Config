@@ -80,6 +80,10 @@
     wezterm
     kitty
     btop
+    ## Tmux
+    tmuxPlugins.vim-tmux-navigator
+    tmuxPlugins.weather
+    tmuxPlugins.tmux-fzf
     # Applications
     ## Web
     firefox
@@ -138,6 +142,9 @@
     };
   };
   programs.neovim.enable = true;
+  programs.tmux = {
+    enable = true;
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
