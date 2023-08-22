@@ -115,7 +115,7 @@
   users.users.carson = {
     isNormalUser = true;
     description = "Carson Webster";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
 
