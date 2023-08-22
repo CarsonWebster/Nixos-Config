@@ -135,6 +135,9 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
+  # Virtualization
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -142,6 +145,7 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     neofetch
+    virt-manager
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
